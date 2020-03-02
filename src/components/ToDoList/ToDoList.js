@@ -1,20 +1,24 @@
-import React from "react";
+import React, { Component } from "react";
 
 import ToDoListItem from "../ToDoListItem/ToDoListItem";
 import "./ToDoList.css";
 
-const ToDoList = ({ toDoData }) => {
-  const elementsList = toDoData.map(item => {
-    const { id, ...itemProps } = item;
+class ToDoList extends Component {
+  render() {
+    const { toDoData } = this.props;
 
-    return (
-      <li className="list-group-item" key={id}>
-        <ToDoListItem {...itemProps} />
-      </li>
-    );
-  });
+    const elementsList = toDoData.map(item => {
+      const { id, ...itemProps } = item;
 
-  return <ul className="list-group todo-list">{elementsList}</ul>;
-};
+      return (
+        <li className="list-group-item" key={id}>
+          <ToDoListItem {...itemProps} />
+        </li>
+      );
+    });
+
+    return <ul className="list-group todo-list">{elementsList}</ul>;
+  }
+}
 
 export default ToDoList;
