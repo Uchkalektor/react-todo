@@ -1,0 +1,13 @@
+.add-item{
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.add-item-input{
+  flex-grow: 1;
+}
+
+.add-item-btn{
+  margin-left: 5px;
+}
