@@ -5,14 +5,19 @@ import "./ToDoList.css";
 
 class ToDoList extends Component {
   render() {
-    const { toDoData, onDeleted } = this.props;
+    const { toDoData, onDeleted, onToggleProperty } = this.props;
 
     const elementsList = toDoData.map(item => {
       const { id, ...itemProps } = item;
 
       return (
         <li className="list-group-item" key={id}>
-          <ToDoListItem {...itemProps} onDeleted={() => onDeleted(id)} />
+          <ToDoListItem
+            {...itemProps}
+            onDeleted={() => onDeleted(id)}
+            onToggleImportant={() => onToggleProperty(id, "isImportant")}
+            onToggleDone={() => onToggleProperty(id, "isDone")}
+          />
         </li>
       );
     });
