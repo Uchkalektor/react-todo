@@ -4,19 +4,22 @@ import "./ItemStatusFilter.css";
 
 class ItemStatusFilter extends Component {
   render() {
-    return (
-      <div className="btn-group">
-        <button type="button" className="btn btn-info">
-          All
+    const { filterData, onChangeFilter } = this.props;
+    const filterItems = filterData.map(obj => {
+      const className =
+        "btn" + (obj.active ? " btn-info" : " btn-outline-secondary");
+      return (
+        <button
+          key={obj.id}
+          type="button"
+          className={className}
+          onClick={() => onChangeFilter(obj.id)}
+        >
+          {obj.label}
         </button>
-        <button type="button" className="btn btn-outline-secondary">
-          Active
-        </button>
-        <button type="button" className="btn btn-outline-secondary">
-          Done
-        </button>
-      </div>
-    );
+      );
+    });
+    return <div className="btn-group">{filterItems}</div>;
   }
 }
 
